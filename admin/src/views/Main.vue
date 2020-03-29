@@ -33,7 +33,9 @@
       </el-header>
 
       <el-main>
-        <el-table :data="tableData">
+        <!-- 路由容器 -->
+        <router-view></router-view>
+        <!-- <el-table :data="tableData">
           <el-table-column
             prop="date"
             label="日期"
@@ -51,7 +53,7 @@
             label="地址"
           >
           </el-table-column>
-        </el-table>
+        </el-table> -->
       </el-main>
     </el-container>
   </el-container>
