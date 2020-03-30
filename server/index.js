@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 app.use(require('cors')())
 app.use(express.json())
-require('./routes/admin')(app)
+require('./routes/admin/index.1')(app)
 require('./plugins/db')(app)
 
 app.listen(3000,()=>{

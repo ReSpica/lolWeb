@@ -40,7 +40,7 @@ export default {
     async save() {
       let res;
       if (this.id) {
-        res = await this.$http.put(`categories/${this.id}`, this.model);
+        res = await this.$http.put(`respica/categories/${this.id}`, this.model);
         if (res) {
           this.$router.push("/categories/list");
           this.$message({
@@ -49,7 +49,7 @@ export default {
           });
         }
       } else {
-        res = await this.$http.post("categories", this.model);
+        res = await this.$http.post("respica/categories", this.model);
         if (res) {
           this.$router.push("/categories/list");
           this.$message({
@@ -60,11 +60,11 @@ export default {
       }
     },
     async feach() {
-      const res = await this.$http.get(`categories/${this.id}`);
+      const res = await this.$http.get(`respica/categories/${this.id}`);
       this.model = res.data;
     },
     async feachParents() {
-      const res = await this.$http.get(`categories`);
+      const res = await this.$http.get(`respica/categories`);
       this.parents = res.data;
     }
   },

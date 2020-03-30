@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get("categories");
+      const res = await this.$http.get("respica/Category");
       this.items = res.data;
     },
     async remove(row) {
@@ -67,7 +67,7 @@ export default {
         cancelButtonText: "取消",
         type: "warning"
       }).then(async () => {
-        const res = await this.$http.delete(`categories/${row._id}`);
+        const res = await this.$http.delete(`respica/categories/${row._id}`);
         if (res) {
           this.$message({
             type: "success",
