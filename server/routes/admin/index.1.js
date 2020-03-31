@@ -7,35 +7,40 @@ module.exports = app=>{
 
 
     router.post('/',async (req,res)=>{
-        console.log('???????',req.params.resource);
-        const Model = require(`../../models/${req.params.resource}`)
-        const items = await Model.create(req.body)
-        res.send(items)
+        const one = await req.Model.create(req.body)
+        res.send(one)
     })
 
     router.put('/:id',async (req,res)=>{
-        const model = await Category.findByIdAndUpdate(req.params.id,req.body)
-        res.send(model)
+        const one = await req.Model.findByIdAndUpdate(req.params.id,req.body)
+        res.send(one)
     })
 
     router.delete('/:id',async (req,res)=>{
-        await Category.findByIdAndDelete(req.params.id,req.body)
+        await req.Model.findByIdAndDelete(req.params.id,req.body)
         res.send({
             code:'0000',
-            msg:'分类删除成功'
+            msg:'删除成功'
         })
     })
 
     router.get('/',async (req,res)=>{
-        console.log('????',req.params.resource)
-        const Model = require(`../../models/${req.params.resource}`)
-        const items = await Model.find().limit(10).populate('parent')
+        var queryOptions = {}
+        console.log(req.Model.modelName);//Category
+        if(req.Model.modelName === 'Category'){
+            queryOptions.populate = 'parent'
+        }
+        const items = await req.Model.find().limit(10).setOptions(queryOptions)
         res.send(items)
     })
 
     router.get('/:id',async (req,res)=>{
-        const model = await Category.findById(req.params.id)
-        res.send(model)
+        const one = await req.Model.findById(req.params.id)
+        res.send(one)
     })
-    app.use('/admin/api/respica/:resource',router)
+    app.use('/admin/api/respica/:resource',async(req,res,next)=>{
+        const modelName = require('inflection').classify(req.params.resource);
+        req.Model = require(`../../models/${modelName}`)
+        next()
+    },router)
 }

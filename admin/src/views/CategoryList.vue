@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get("respica/Category");
+      const res = await this.$http.get("respica/categories");
       this.items = res.data;
     },
     async remove(row) {
