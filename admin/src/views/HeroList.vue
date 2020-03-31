@@ -14,15 +14,15 @@
       </el-table-column>
       <el-table-column
         prop="name"
-        label="物品名称"
+        label="英雄名称"
       >
       </el-table-column>
       <el-table-column
-        prop="icon"
-        label="图片"
+        prop="avatar"
+        label="英雄头像"
       >
         <template slot-scope="scope">
-          <img :src="scope.row.icon" alt="" style="hright:3rem;">
+          <img :src="scope.row.avatar" alt="" style="hright:3rem;">
         </template>
       </el-table-column>
       <el-table-column
@@ -32,7 +32,7 @@
       >
         <template slot-scope="scope">
           <el-button
-            @click="$router.push(`/items/edit/${scope.row._id}`)"
+            @click="$router.push(`/heroes/edit/${scope.row._id}`)"
             type="primary"
             size="small"
           >
@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get("respica/items");
+      const res = await this.$http.get("respica/heroes");
       this.items = res.data;
     },
     async remove(row) {
@@ -69,7 +69,7 @@ export default {
         cancelButtonText: "取消",
         type: "warning"
       }).then(async () => {
-        const res = await this.$http.delete(`respica/items/${row._id}`);
+        const res = await this.$http.delete(`respica/heroes/${row._id}`);
         if (res) {
           this.$message({
             type: "success",
