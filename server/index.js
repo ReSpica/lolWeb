@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 app.use(require('cors')())
 app.use(express.json())
+app.use('/uploads',express.static(__dirname + '/uploads'))//访问图片的路径
 require('./routes/admin/index.1')(app)
 require('./plugins/db')(app)
 
