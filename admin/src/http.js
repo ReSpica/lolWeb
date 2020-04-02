@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Vue from 'vue'
+import router from './router'
 const http = axios.create({
     baseURL: 'http://localhost:3000/admin/api'
 });
@@ -14,7 +15,21 @@ http.interceptors.response.use(res => {
             type: 'error',
             message: err.response.data.message
         })
+        //如果是401错误，就是token的问题，需要跳去登录页面
+        if (err.response.status === 401) {
+            router.push('/login')
+        }
     }
+    return Promise.reject(err)
+})
+
+//操作请求头
+http.interceptors.request.use((config) => {
+    if (localStorage.token) {
+        config.headers.Authorization = 'Bearer ' + localStorage.token
+    }
+    return config;
+}, err => {
     return Promise.reject(err)
 })
 export default http

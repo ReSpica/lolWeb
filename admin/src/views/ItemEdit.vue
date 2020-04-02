@@ -12,7 +12,8 @@
       <el-form-item label="图标">
         <el-upload
           class="avatar-uploader"
-          :action="$http.defaults.baseURL +'/upload'"
+          :action="mixin_uploadUrl"
+          :headers="mixin_getAuthHeaders()"
           :show-file-list="false"
           :on-success="afterUpload"
         >

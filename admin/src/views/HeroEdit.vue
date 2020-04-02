@@ -24,7 +24,8 @@
           <el-form-item label="英雄头像">
             <el-upload
               class="avatar-uploader"
-              :action="$http.defaults.baseURL +'/upload'"
+              :action="mixin_uploadUrl"
+              :headers="mixin_getAuthHeaders()"
               :show-file-list="false"
               :on-success="afterUpload"
             >
@@ -143,7 +144,8 @@
               <el-form-item label="技能图标">
                 <el-upload
                   class="avatar-uploader"
-                  :action="$http.defaults.baseURL +'/upload'"
+                  :action="mixin_uploadUrl"
+                  :headers="mixin_getAuthHeaders()"
                   :show-file-list="false"
                   :on-success="res=>$set(item,'icon',res.url)"
                 >

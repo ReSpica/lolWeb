@@ -56,13 +56,21 @@ const routes = [
   {
     path: '/login',
     name:'login',
-    component:Login
+    component:Login,
+    meta:{isPublic:true}
   }
 
 ]
 
+//使用导航守卫前
 const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to,form,next)=>{
+  if(!to.meta.isPublic && !localStorage.token){
+    return next('/login')
+  }
+  next()
+})
 export default router
