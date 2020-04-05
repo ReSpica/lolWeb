@@ -1,0 +1,65 @@
+$colors:(
+    "primary":#db9e3f,
+    "primary1":#e7cb9f,
+    "white":#fff,
+    "line":#f9f9f9,
+    "grey":#999,
+    "grey1":#666,
+    "pink":pink,
+    "dark1":#343440,
+    "dark2":#222,
+    "black":#000,
+);
+
+
+
+$base-font-size:1rem;
+$font-sizes:(
+    xxs:0.6154,
+    xs:0.7692,
+    sm:0.9231,
+    md:1,
+    lg:1.0769,
+    xl:1.2308,
+);
+
+
+
+ //justify-content
+ $flex-jc:(
+    start:flex-start,
+    end:flex-end,
+    center:center,
+    betwen:space-between,
+    around:space-around,
+);
+
+//align-items 
+$flex-al:(
+    start:flex-start,
+    end:flex-end,
+    center:center,
+    stretch:stretch,
+);
+
+
+//spacing间距
+$spacing-types:(
+    m:margin,
+    p:padding
+);
+$spacing-directions:(
+    t:top,
+    r:right,
+    l:left,
+    b:bottom
+);
+$spacing-base-size:1rem;
+$spacing-sizes:(
+    "0":0,
+    "1":0.25,
+    "2":0.5,
+    "3":1,
+    "4":1.5,
+    "5":3,
+);

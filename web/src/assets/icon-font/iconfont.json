@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "637630",
+      "name": "LC_icon_menu_line",
+      "font_class": "LC_icon_menu_line",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "6654507",
+      "name": "card-hero",
+      "font_class": "card-hero",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "9333008",
+      "name": "返 回",
+      "font_class": "fanhui",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "13216324",
+      "name": "菜单",
+      "font_class": "toggle",
+      "unicode": "e504",
+      "unicode_decimal": 58628
+    },
+    {
+      "icon_id": "13547768",
+      "name": "Change-another-one-18px",
+      "font_class": "Change-another-one-px",
+      "unicode": "e851",
+      "unicode_decimal": 59473
+    }
+  ]
+}
