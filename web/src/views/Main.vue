@@ -18,7 +18,7 @@
     </div>
 
     <div class="bg-primary pt-3 pb-2">
-      <div class="nav d-flex text-white jc-around">
+      <div class="nav nav-inverse d-flex text-white jc-around">
         <div class="nav-item active">
           <router-link
             class="nav-link"
@@ -42,8 +42,7 @@
         </div>
       </div>
     </div>
-
-
+    
     <router-view></router-view>
   </div>
 </template>
@@ -54,5 +53,10 @@ export default {};
 
 
 
-<style scoped>
+<style lang="scss">
+.topbar{
+  position: sticky;
+  top:0;
+  z-index:999;
+}
 </style>

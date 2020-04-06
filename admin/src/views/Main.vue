@@ -72,7 +72,7 @@
 
       <el-main>
         <!-- 路由容器 -->
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
         <!-- <el-table :data="tableData">
           <el-table-column
             prop="date"

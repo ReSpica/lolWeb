@@ -147,8 +147,17 @@ a{
         border-bottom:2px solid transparent;
         padding-bottom:0.2rem;
         &.active{
-            border-bottom:2px solid #fff;
+            color:map-get($colors , 'primary' );
+            border-bottom:2px solid map-get($colors , 'primary' );
         }
+    }
+    &.nav-inverse{
+      .nav-item{
+          color:#fff;
+          &.active{
+              border-bottom-color: #f1f1f1
+          }
+      }      
     }
 }
 

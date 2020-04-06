@@ -11,6 +11,12 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 Vue.use(VueAwesomeSwiper, )
 
+
+
+import Card from './components/Card.vue'
+Vue.component('respica-card',Card)
+import Card1 from './components/Card1.vue'
+Vue.component('respica-card1',Card1)
 new Vue({
   router,
   render: h => h(App)

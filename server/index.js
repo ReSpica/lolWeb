@@ -6,6 +6,7 @@ app.use(require('cors')())
 app.use(express.json())
 app.use('/uploads',express.static(__dirname + '/uploads'))//访问图片的路径
 require('./routes/admin/index.1')(app)
+require('./routes/web/index')(app)
 require('./plugins/db')(app)
 
 app.listen(3000,()=>{
