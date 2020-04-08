@@ -67,13 +67,13 @@
 
       <template #items="{category}">
         <div
-          class="py-2 d-flex flex-1 jc-between"
+          class="py-2 d-flex flex-1 fs-lg"
           v-for="(item,i) in category.newsList"
           :key="i"
         >
-          <span>[{{item.categoryName}}]</span>
-          <span>|</span>
-          <span>{{item.title}}</span>
+          <span class="text-info">[{{item.categoryName}}]</span>
+          <span class="px-2">|</span>
+          <span class="flex-1 text-ellipsis pr-2">{{item.title}}</span>
           <span>{{item.date}}</span>
         </div>
       </template>
@@ -95,6 +95,18 @@
 
 </template>
 
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
 export default {
   data() {
@@ -106,52 +118,41 @@ export default {
         autoplay: { delay: 3000 }
         // Some Swiper option/callback...
       },
-      newsCats: [
-        {
-          name: "热门",
-          newsList: new Array(5).fill({}).map(() => ({
-            categoryName: "公告",
-            title: "Do do do do do do嘟噜噜噜噜噜我惬意的哼着歌",
-            date: "06/01"
-          }))
-        },
-        {
-          name: "新闻",
-          newsList: new Array(5).fill({}).map(() => ({
-            categoryName: "新闻",
-            title: "Do do do do do do嘟噜噜噜噜噜我惬意的哼着歌",
-            date: "06/01"
-          }))
-        },
-        {
-          name: "公告",
-          newsList: new Array(5).fill({}).map(() => ({
-            categoryName: "公告",
-            title: "Do do do do do do嘟噜噜噜噜噜我惬意的哼着歌",
-            date: "06/01"
-          }))
-        },
-        {
-          name: "活动",
-          newsList: new Array(5).fill({}).map(() => ({
-            categoryName: "活动",
-            title: "Do do do do do do嘟噜噜噜噜噜我惬意的哼着歌",
-            date: "06/01"
-          }))
-        },
-        {
-          name: "赛事",
-          newsList: new Array(5).fill({}).map(() => ({
-            categoryName: "赛事",
-            title: "Do do do do do do嘟噜噜噜噜噜我惬意的哼着歌",
-            date: "06/01"
-          }))
-        }
-      ]
+      newsCats: []
     };
+  },
+  methods:{
+    async fecthNewsCats(){
+      const res = await this.$http.get('news/list')
+      console.log(res);
+      this.newsCats = res.data
+    }
+  },
+  created(){
+    this.fecthNewsCats()
   }
 };
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -177,5 +178,12 @@ export default {
       border-left: none;
     }
   }
+}
+
+.text-ellipsis{
+  display:inline-block;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 </style>
