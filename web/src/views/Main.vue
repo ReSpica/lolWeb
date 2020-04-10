@@ -8,7 +8,7 @@
         height="30"
       >
       <div class="px-2 flex-1">
-        <div class="text-white fs-ms">英雄联盟</div>
+        <div class="text-white fs-ms">lol掌游宝</div>
         <div class="text-grey1 fs-xxs">lpl加油</div>
       </div>
       <button

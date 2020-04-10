@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Main from '../views/Main.vue'
 import Home from '../views/Home.vue'
-
+import Article from '../views/Ariticle.vue'
+import Hero from '../views/Hero.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -11,9 +12,11 @@ const routes = [
     name: 'main',
     component: Main,
     children:[
-      {path:'/',name:'home',component:Home}
+      {path:'/',name:'home',component:Home},
+      {path:'/article/:id',name:'articles',component:Article,props:true},
     ]
   },
+  {path:'/hero/:id',name:'hero',component:Hero,props:true}
 
 ]
 

@@ -66,7 +66,9 @@
     >
 
       <template #items="{category}">
-        <div
+        <router-link
+          tag="div"
+          :to="`/article/${item._id}`"
           class="py-2 d-flex flex-1 fs-lg"
           v-for="(item,i) in category.newsList"
           :key="i"
@@ -75,14 +77,48 @@
           <span class="px-2">|</span>
           <span class="flex-1 text-ellipsis pr-2">{{item.title}}</span>
           <span>{{item.date}}</span>
-        </div>
+        </router-link>
       </template>
 
     </respica-card1>
     <!-- 新闻资讯 -->
 
     <!-- 英雄列表 -->
+    <respica-card1
+      icon="card-hero"
+      title="英雄列表"
+      :categories="heroesCats"
+    >
+      <template #img="">
+        <img
+          src="../assets/images/hero.jpg"
+          alt=""
+          width="100%"
+        >
+      </template>
+      <template #items="{category}">
+        <div class="d-flex felx-wrap">
+          <router-link
+          tag="div"
+          :to="`/hero/${item._id}`"
+            class="py-2 text-center "
+            v-for="(item,i) in category.heroes"
+            :key="i"
+            style="width:20%"
+          >
+            <div class="mr-3">
+              <img
+                :src="item.avatar"
+                alt=""
+                width="100%"
+              >
+              <div>{{item.name}}</div>
+            </div>
+          </router-link>
+        </div>
+      </template>
 
+    </respica-card1>
     <!-- 英雄列表 -->
     <p>11</p>
     <p>11</p>
@@ -118,18 +154,23 @@ export default {
         autoplay: { delay: 3000 }
         // Some Swiper option/callback...
       },
-      newsCats: []
+      newsCats: [],
+      heroesCats: []
     };
   },
-  methods:{
-    async fecthNewsCats(){
-      const res = await this.$http.get('news/list')
-      console.log(res);
-      this.newsCats = res.data
+  methods: {
+    async fecthNewsCats() {
+      const res = await this.$http.get("news/list");
+      this.newsCats = res.data;
+    },
+    async fecthHeroesCats() {
+      const res = await this.$http.get("heroes/list");
+      this.heroesCats = res.data;
     }
   },
-  created(){
-    this.fecthNewsCats()
+  created() {
+    this.fecthNewsCats();
+    this.fecthHeroesCats();
   }
 };
 </script>
@@ -180,10 +221,10 @@ export default {
   }
 }
 
-.text-ellipsis{
-  display:inline-block;
+.text-ellipsis {
+  display: inline-block;
   overflow: hidden;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 </style>

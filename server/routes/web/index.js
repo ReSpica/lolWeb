@@ -4,6 +4,7 @@ module.exports = app => {
     const mongoose = require('mongoose')
     const Category = require('../../models/Category')
     const Article = require('../../models/Article')
+    const Hero = require('../../models/Hero')
 
 
 
@@ -59,5 +60,32 @@ module.exports = app => {
         res.send(cats)
     })
 
+    router.get('/heroes/list', async (req, res) => {
+        const parent = await Category.findOne({
+            name: "英雄列表"
+        })
+        const heroes = await Category.aggregate([
+            { $match: { parent: parent._id } }, 
+            {
+                $lookup: {
+                    from: 'heros', //这个是数据库上的表名，默认是模型名字（Articles）的小写复数形式
+                    localField: '_id',
+                    foreignField: 'categories',
+                    as: 'heroes'
+                }
+            }
+        ])
+        res.send(heroes)
+    })
+
+    router.get('/articles/:id',async(req,res)=>{
+        const one = await Article.findById(req.params.id)
+        res.send(one)
+    })
+
+    router.get('/hero/:id',async(req,res)=>{
+        const one = await Hero.findById(req.params.id).populate('categories')
+        res.send(one)
+    })
     app.use('/web/api', router)
 }

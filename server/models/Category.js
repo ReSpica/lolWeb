@@ -20,4 +20,11 @@ schema.virtual('newLists',{
     ref:'Article'
 })
 
+schema.virtual('heroes',{
+    localField:'_id',
+    foreignField:'categories',
+    justOne:false,
+    ref:'Hero'
+})
+
 module.exports = mongoose.model('Category',schema)

@@ -41,6 +41,26 @@
             </el-upload>
           </el-form-item>
 
+          <el-form-item label="英雄大图">
+            <el-upload
+              class="avatar-uploader"
+              :action="mixin_uploadUrl"
+              :headers="mixin_getAuthHeaders()"
+              :show-file-list="false"
+              :on-success="res=> $set(model,'picture',res.url)"
+            >
+              <img
+                v-if="model.picture"
+                :src="model.picture"
+                class="picture"
+              >
+              <i
+                v-else
+                class="el-icon-plus avatar-uploader-icon"
+              ></i>
+            </el-upload>
+          </el-form-item>
+
           <el-form-item label="类型">
             <el-select
               v-model="model.categories"

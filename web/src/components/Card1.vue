@@ -8,6 +8,7 @@
       <div class="fs-xl flex-1 px-2">{{title}}</div>
       <i class="iconfont icon-toggle "></i>
     </div>
+    <slot name="img"></slot>
     <div class="card-body mb-1 mt-3">
       <div class="nav d-flex jc-between">
         <div
