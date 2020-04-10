@@ -5,6 +5,8 @@ app.set('secret','spica')//设置一个全局的常量，用于设置和识别to
 app.use(require('cors')())
 app.use(express.json())
 app.use('/uploads',express.static(__dirname + '/uploads'))//访问图片的路径
+app.use('/admin/',express.static(__dirname + '/01-admin'))//访问admin路径
+app.use('/web/',express.static(__dirname + '/02-web'))//访问admin路径
 require('./routes/admin/index.1')(app)
 require('./routes/web/index')(app)
 require('./plugins/db')(app)
