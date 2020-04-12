@@ -27,6 +27,20 @@
       "unicode_decimal": 58890
     },
     {
+      "icon_id": "11502789",
+      "name": "picture",
+      "font_class": "tupian",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "12746790",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e6cf",
+      "unicode_decimal": 59087
+    },
+    {
       "icon_id": "13216324",
       "name": "菜单",
       "font_class": "toggle",
